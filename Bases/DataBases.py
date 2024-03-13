@@ -4,7 +4,7 @@ from Bases.Base import URL_BASE
 class SpaceXDataFetcher:
     def __init__(self, url):
         self.url = URL_BASE + url
-        self.last_status_code = None  # Initialize last status code attribute
+        self.last_status_code = None
 
     def fetch_data(self):
         try:

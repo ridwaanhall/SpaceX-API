@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "SpaceX"
+    abort(404)
 
 @app.route("/api/<path:endpoint>")
 def spacex_data(endpoint):
