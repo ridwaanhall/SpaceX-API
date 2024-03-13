@@ -11,11 +11,30 @@ app = Flask(__name__)
 def hello_world():
     abort(404)
 
-@app.route("/api/<path:endpoint>")
-def spacex_data(endpoint):
-    spacex = SpaceX(endpoint)
-    data = spacex.get_data()
+@app.route("/api/homepage-tiles")
+def HomepageTiles():
+    spacex = SpaceX("homepage-tiles")
+    data = spacex.homepage_tiles()
     if data and spacex.data_fetcher.last_status_code == 200:
         return jsonify(data)
     else:
         return jsonify(data), spacex.data_fetcher.last_status_code
+
+@app.route("/api/launches-page-tiles")
+def LaunchesPageTiles():
+    spacex = SpaceX("launches-page-tiles")
+    data = spacex.launches_page_tiles()
+    if data and spacex.data_fetcher.last_status_code == 200:
+        return jsonify(data)
+    else:
+        return jsonify(data), spacex.data_fetcher.last_status_code
+    
+@app.route("/api/launches-page-stats")
+def LaunchesPageStats():
+    spacex = SpaceX("launches-page-stats")
+    data = spacex.launches_page_stats()
+    if data and spacex.data_fetcher.last_status_code == 200:
+        return jsonify(data)
+    else:
+        return jsonify(data), spacex.data_fetcher.last_status_code
+    
