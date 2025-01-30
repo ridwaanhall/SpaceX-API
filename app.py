@@ -9,7 +9,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    abort(404)
+    return jsonify({
+        "available_endpoints": [
+            "/api/homepage-tiles",
+            "/api/launches-page-tiles",
+            "/api/launches-page-stats"
+        ]
+    })
 
 @app.route("/api/homepage-tiles")
 def HomepageTiles():
